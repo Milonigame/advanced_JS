@@ -5,4 +5,4 @@ const persone={
     tel: '+657767675'
 };
 
-console.log(JSON.stringify(persone));
+console.log(JSON.parse(JSON.stringify(persone)));
