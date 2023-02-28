@@ -11,6 +11,18 @@ inputRub.addEventListener('input', ()=>{
     request.setRequestHeader('Content-type','application/json;charset=utf-8')
     request.send();
 
+ request.addEventListener('readystatechange', ()=>{
+     if (request.readyState===4&&request.status===200){
+        console.log(request.response);
+        const data=JSON.parse(request.response);
+        inputUsd.value=+inputRub.value/data.current.usd;
+    }else{
+
+        inputUsd.value='Что-то пошло не так';
+    }
+
+ });
+
 
     //status-какой статус,например 404 или 101 и тд.
     //statusText-текстовое описание ответа от сервера
@@ -18,7 +30,7 @@ inputRub.addEventListener('input', ()=>{
     //тот ответ который нам задал бэкенд разработчик
     //readyState-текущее состояние запроса
 
-    
+
 
 
 });
